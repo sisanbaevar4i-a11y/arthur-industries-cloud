@@ -13,7 +13,7 @@ export default function ProductDetails() {
     const [isAdded, setIsAdded] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/products/${id}`)
+        fetch(`https://arthur-industries-api3.onrender.com/api/products/${id}`)
             .then(res => {
                 if(!res.ok) throw new Error('Not found');
                 return res.json();

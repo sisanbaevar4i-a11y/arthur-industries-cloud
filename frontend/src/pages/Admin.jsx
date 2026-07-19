@@ -10,7 +10,7 @@ export default function Admin() {
     const [formData, setFormData] = useState(initialFormState);
 
     const fetchProducts = async () => {
-        try { const res = await fetch('http://localhost:5000/api/products'); const data = await res.json(); setProducts(data); } catch (e) {}
+        try { const res = await fetch('https://arthur-industries-api3.onrender.com/api/products'); const data = await res.json(); setProducts(data); } catch (e) {}
     };
     useEffect(() => { fetchProducts(); }, []);
 
@@ -38,7 +38,7 @@ export default function Admin() {
 
         if (!payload.id) delete payload.id;
 
-        const url = formData.id ? `http://localhost:5000/api/products/${formData.id}` : 'http://localhost:5000/api/products';
+        const url = formData.id ? `https://arthur-industries-api3.onrender.com/api/products/${formData.id}` : 'https://arthur-industries-api3.onrender.com/api/products';
         const method = formData.id ? 'PUT' : 'POST';
         await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
         setFormData(initialFormState); setIsEditing(false); fetchProducts();
@@ -46,7 +46,7 @@ export default function Admin() {
 
     const handleDelete = async (id) => {
         if (!window.confirm('Удалить товар?')) return;
-        await fetch(`http://localhost:5000/api/products/${id}`, { method: 'DELETE' }); fetchProducts();
+        await fetch(`https://arthur-industries-api3.onrender.com/api/products/${id}`, { method: 'DELETE' }); fetchProducts();
     };
 
     const labelStyle = { fontSize: '9px', color: '#5a9df8', textTransform: 'uppercase', letterSpacing: '1.5px', paddingLeft: '15px', marginBottom: '-10px', zIndex: 1, position: 'relative', fontWeight: '700' };
