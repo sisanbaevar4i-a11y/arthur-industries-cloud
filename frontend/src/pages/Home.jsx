@@ -10,7 +10,7 @@ export default function Home() {
 
     useEffect(() => {
         // Оптимизированный прямой канал связи (127.0.0.1)
-        fetch('[https://arthur-industries-api3.onrender.com/api/products')
+        fetch('https://arthur-industries-api3.onrender.com/api/products')
             .then(res => res.json())
             .then(data => {
                 if (Array.isArray(data)) {
@@ -72,7 +72,7 @@ export default function Home() {
                     <div className="product-grid">
                         {filteredProducts.map(product => <ProductCard key={product.id} product={product} />)}
                     </div>
-                ) : (
+               ) : (
                     <div style={{ textAlign: 'center', marginTop: '80px', color: 'rgba(255,255,255,0.5)' }}>
                         <p style={{ fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase' }}>Система не обнаружила совпадений в каталоге.</p>
                     </div>
