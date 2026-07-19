@@ -1,0 +1,93 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+html { scroll-behavior: smooth; }
+body { background-color: #000000; color: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* Навигация */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 40px; position: sticky; top: 0; z-index: 100; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
+.navbar-left, .navbar-right { display: flex; gap: 12px; align-items: center; }
+.navbar-center { position: absolute; left: 50%; transform: translateX(-50%); }
+.brand-name { font-size: 14px; font-weight: 400; letter-spacing: 6px; text-decoration: none; color: #fff; text-transform: uppercase; }
+
+/* Кнопки-пилюли */
+.pill-btn { background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); padding: 10px 24px; border-radius: 30px; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.4s ease; display: inline-flex; align-items: center; justify-content: center; }
+.pill-btn:hover { background-color: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2); }
+
+/* Меню */
+.sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; backdrop-filter: blur(5px); }
+.sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+.sidebar { position: fixed; top: 0; left: -100%; width: 340px; height: 100vh; background-color: #050505; border-right: 1px solid #141414; z-index: 1000; padding: 50px 40px; display: flex; flex-direction: column; gap: 25px; transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+.sidebar.active { left: 0; box-shadow: 20px 0 50px rgba(0,0,0,0.9); }
+.sidebar-title { color: #5a9df8; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; margin-top: 20px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
+.sidebar-link { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.3s, transform 0.3s; background: none; border: none; text-align: left; cursor: pointer; padding: 8px 0; display: block; width: 100%; letter-spacing: 0.5px; }
+.sidebar-link:hover { color: #fff; transform: translateX(5px); }
+
+/* Витрина */
+.page-container { padding: 60px; max-width: 1500px; margin: 0 auto; min-height: 80vh; }
+.main-category-header { font-size: 16px; letter-spacing: 6px; color: #fff; text-transform: uppercase; margin-bottom: 50px; font-weight: 400; border-left: 2px solid #5a9df8; padding-left: 20px; }
+.sub-category-header { font-size: 13px; letter-spacing: 4px; color: rgba(255,255,255,0.9); text-transform: uppercase; margin-bottom: 30px; font-weight: 600; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-bottom: 100px; }
+
+/* Карточка */
+.product-card { background: rgba(15, 15, 15, 0.4); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.04); border-top: 1px solid rgba(255, 255, 255, 0.08); border-left: 1px solid rgba(255, 255, 255, 0.06); border-radius: 28px; padding: 30px; display: flex; flex-direction: column; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); cursor: pointer; position: relative; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.01); }
+.product-card:hover { border-color: rgba(255, 255, 255, 0.15); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(90, 157, 248, 0.08); background: rgba(20, 20, 20, 0.5); }
+.product-img-wrapper { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 25px; }
+.product-img { max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5)); }
+.product-card:hover .product-img { transform: scale(1.05); }
+.product-badge { position: absolute; top: -10px; right: -10px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); color: #000; padding: 6px 14px; border-radius: 20px; font-size: 9px; font-weight: 800; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); }
+.product-title { font-size: 16px; font-weight: 600; margin: 0 0 6px 0; letter-spacing: 0.5px; }
+.product-slogan { color: #82baff; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin: 0 0 25px 0; min-height: 24px; opacity: 1; }
+.product-price { font-size: 16px; margin-bottom: 20px; color: #fff; font-weight: 500; }
+
+/* Конфигурации */
+.config-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+.config-btn { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.9); padding: 10px 18px; border-radius: 20px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); letter-spacing: 0.5px; }
+.config-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.4); color: #fff; }
+.config-btn.active { border-color: rgba(255, 255, 255, 0.9); color: #000; background: rgba(255, 255, 255, 0.95); box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+
+/* Кнопка Корзины */
+.add-to-cart-btn { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; padding: 16px; border-radius: 30px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); margin-top: auto; display: flex; align-items: center; justify-content: center; }
+.add-to-cart-btn:hover { background: rgba(255, 255, 255, 1); color: #000; box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15); }
+.add-to-cart-btn.added { background: #5a9df8; color: #000; border-color: #5a9df8; transform: scale(0.97); box-shadow: 0 0 20px rgba(90, 157, 248, 0.4); }
+
+/* Детальная страница */
+.details-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.details-image-container { background: #050505; border: 1px solid #141414; border-radius: 32px; padding: 60px; display: flex; align-items: center; justify-content: center; min-height: 500px; position: relative; }
+.details-image { max-width: 100%; max-height: 500px; object-fit: contain; }
+.details-info-container { display: flex; flex-direction: column; gap: 20px; padding: 20px 0; }
+.details-title { font-size: 36px; font-weight: 400; letter-spacing: -1px; margin: 0; }
+.details-slogan { color: #5a9df8; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+.details-price { font-size: 28px; font-weight: 300; color: #fff; margin: 10px 0 20px 0; }
+
+.tabs-header { display: flex; gap: 40px; border-bottom: 1px solid #1a1a1a; margin-top: 30px; }
+.tab-btn { background: none; border: none; color: #555; cursor: pointer; padding-bottom: 15px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; border-bottom: 2px solid transparent; transition: all 0.3s; }
+.tab-btn.active { color: #fff; border-bottom: 2px solid #5a9df8; }
+.tab-content { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.7); font-weight: 300; padding-top: 30px; min-height: 150px; }
+.tab-content ul { padding-left: 20px; display: flex; flex-direction: column; gap: 12px; }
+
+/* Отдельная Вкладка: Корзина */
+.cart-page-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 50px; align-items: start; }
+.cart-items-list { display: flex; flex-direction: column; gap: 20px; }
+
+.checkout-btn { width: 100%; background: #fff; color: #000; border: none; padding: 20px; border-radius: 30px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; margin-top: 40px; transition: all 0.3s ease; }
+.checkout-btn:hover { background: #5a9df8; color: #fff; box-shadow: 0 10px 30px rgba(90, 157, 248, 0.3); transform: translateY(-2px); }
+.checkout-input { width: 100%; background: #0a0a0a; border: 1px solid #1a1a1a; color: #fff; padding: 18px 25px; border-radius: 16px; margin-bottom: 15px; font-size: 13px; outline: none; transition: all 0.3s; letter-spacing: 0.5px; }
+.checkout-input:focus { border-color: #5a9df8; background: #111; }
+.checkout-input::placeholder { color: rgba(255,255,255,0.3); }
+
+/* Админ Панель */
+.admin-container { background: #050505; border: 1px solid #141414; border-radius: 28px; padding: 50px; }
+.admin-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a1a; padding: 25px 0; }
+.admin-action-btn { background: none; border: none; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: opacity 0.3s; font-weight: 600; }
+.admin-action-btn:hover { opacity: 0.7; }
+.admin-submit { background: #fff; color: #000; padding: 18px; border-radius: 16px; border: none; font-size: 11px; font-weight: 800; letter-spacing: 2px; cursor: pointer; text-transform: uppercase; width: 100%; margin-top: 30px; transition: all 0.3s; }
+.admin-submit:hover { opacity: 0.8; transform: translateY(-2px); }
+
+/* Подвал */
+.footer { text-align: center; padding: 80px 20px 60px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #111; margin-top: auto; }
+.footer-title { font-size: 14px; font-weight: 500; letter-spacing: 10px; color: #fff; text-transform: uppercase; }
+.footer-subtitle { font-size: 10px; color: #5a9df8; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
+
+@media (max-width: 768px) {
+    .navbar { padding: 20px; } .page-container { padding: 20px; } .details-layout, .cart-page-layout { grid-template-columns: 1fr; } .hide-mobile { display: none; }
+    .brand-name { font-size: 12px; letter-spacing: 4px; }
+}
