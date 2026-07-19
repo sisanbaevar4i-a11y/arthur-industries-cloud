@@ -10,7 +10,7 @@ export default function Home() {
 
     useEffect(() => {
         // Оптимизированный прямой канал связи (127.0.0.1)
-        fetch('http://127.0.0.1:5000/api/products')
+        fetch('[https://arthur-industries-api3.onrender.com/api/products')
             .then(res => res.json())
             .then(data => {
                 if (Array.isArray(data)) {
